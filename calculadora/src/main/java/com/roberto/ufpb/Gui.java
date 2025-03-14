@@ -23,6 +23,9 @@ public class Gui extends JFrame{
         visor.setBackground(Color.BLUE);
         visor.setVisible(true);
         add(visor, BorderLayout.NORTH);
+
+        Button n1 = new Button(1);
+        add(n1, BorderLayout.SOUTH);
     }
     
 }
