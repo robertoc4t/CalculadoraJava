@@ -22,7 +22,7 @@ public class Gui extends JFrame {
 
         JPanel visor = new JPanel(new FlowLayout(FlowLayout.CENTER));
         visor.setPreferredSize(new Dimension(0, 70));
-        visor.setBackground(Color.BLUE);
+        visor.setBackground(Color.RED);
         add(visor, BorderLayout.NORTH);
 
         JLabel textVisor = new JLabel("C4T0.2");
