@@ -4,8 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Gui extends JFrame {
@@ -18,10 +20,17 @@ public class Gui extends JFrame {
 
 
 
-        JPanel visor = new JPanel();
-        visor.setPreferredSize(new Dimension(350, 70));
+        JPanel visor = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        visor.setPreferredSize(new Dimension(0, 70));
         visor.setBackground(Color.BLUE);
         add(visor, BorderLayout.NORTH);
+
+        JLabel textVisor = new JLabel("C4T0.2");
+        textVisor.setFont(new Font( "Arial", Font.BOLD, 30) {
+        });;
+        visor.add(textVisor);
+
+
 
         // Painel para os botões
         JPanel painelBotoes = new JPanel(new FlowLayout(FlowLayout.LEFT));
