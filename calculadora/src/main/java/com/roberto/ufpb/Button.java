@@ -23,4 +23,6 @@ public class Button extends JButton{
     public void setDimension(int a, int b){
         setPreferredSize(new Dimension(a, b));
     }
+
+
 }

@@ -5,6 +5,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -33,38 +36,34 @@ public class Gui extends JFrame {
 
 
         // Painel para os botões
-        JPanel painelBotoes = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        Button n1 = new Button(1);      
-        painelBotoes.add(n1);
+        JPanel painelBotoes = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.insets = new Insets(5, 5, 5, 5);
 
-        Button n2 = new Button(2);
-        painelBotoes.add(n2);
+        // Lista de botões
+        int[][] numeros = {
+            {7, 8, 9},
+            {4, 5, 6},
+            {1, 2, 3},
+            {0}
+        };
 
-        Button n3 = new Button(3);
-        painelBotoes.add(n3);
+        // Adiciona os botões numéricos
+        for (int i = 0; i < numeros.length; i++) {
+            for (int j = 0; j < numeros[i].length; j++) {
+                gbc.gridx = j;
+                gbc.gridy = i;
+                gbc.weightx = 1.0;
+                gbc.weighty = 1.0;
+                Button botao = new Button(numeros[i][j]);
 
-        Button n4 = new Button(4);
-        painelBotoes.add(n4);
+                painelBotoes.add(botao, gbc);
+            }
+        }
 
-        Button n5 = new Button(5);
-        painelBotoes.add(n5);
 
-        Button n6 = new Button(6);
-        painelBotoes.add(n6);
-
-        Button n7 = new Button(7);
-        painelBotoes.add(n7);
-
-        Button n8 = new Button(8);
-        painelBotoes.add(n8);
-
-        Button n9 = new Button(9);
-        painelBotoes.add(n9);
-
-        Button n0 = new Button(0);
-        n0.setDimension(310, 70);
-        painelBotoes.add(n0);
-
+        
 
 
         // Adiciona o painel de botões abaixo do visor
