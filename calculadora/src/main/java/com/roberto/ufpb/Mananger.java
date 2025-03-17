@@ -6,9 +6,8 @@ public class Mananger {
     private String valueOperation;
     private int total;
 
-    public Mananger(int value1, int value2, String valueOp){
-        this.value1 = value1;
-        this.value2 = value2;
+    public Mananger(String valueOp){
+        
         this.valueOperation = valueOp;
 
     }

@@ -19,12 +19,7 @@ public class Button extends JButton implements ActionListener{
         setBackground(Color.BLACK);
         setText(String.valueOf(numeros));
         setBackground(Color.white);
-        try {
-            // Tenta converter a string para um número inteiro
-            this.value = Integer.parseInt(numeros);
-        } catch (NumberFormatException e) {
-            
-        }
+        valueString = numeros;
 
         addActionListener(this);
         
@@ -39,13 +34,21 @@ public class Button extends JButton implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // Ação a ser executada quando o botão for clicado
-        value = value;
-        System.out.println(value);
+        valueString = valueString;
+        System.out.println(valueString);
+        try{
+
+        }
         getValue();
         // Implementar a lógica desejada aqui
+
+        
     }
     public int getValue(){
         return value;
+    }
+    public int getValueNumeric(){
+        if(valueString == "")
     }
 
     
