@@ -17,7 +17,7 @@ public class Gui extends JFrame {
 
     public Gui() {
         setTitle("Calculadora");
-        setSize(335, 470);
+        setSize(600, 450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
@@ -29,8 +29,7 @@ public class Gui extends JFrame {
         add(visor, BorderLayout.NORTH);
 
         JLabel textVisor = new JLabel("C4T0.2");
-        textVisor.setFont(new Font( "Arial", Font.BOLD, 30) {
-        });;
+        textVisor.setFont(new Font( "Arial", Font.BOLD, 50));
         visor.add(textVisor);
 
 
@@ -42,11 +41,11 @@ public class Gui extends JFrame {
         gbc.insets = new Insets(5, 5, 5, 5);
 
         // Lista de botões
-        int[][] numeros = {
-            {7, 8, 9},
-            {4, 5, 6},
-            {1, 2, 3},
-            {0}
+        String[][] numeros = {
+            {"7", "8", "9", "+"},
+            {"4", "5", "6", "-"},
+            {"1", "2", "3", "/"},
+            {"0", "%", "x", "="}
         };
 
         // Adiciona os botões numéricos
@@ -62,8 +61,6 @@ public class Gui extends JFrame {
             }
         }
 
-
-        
 
 
         // Adiciona o painel de botões abaixo do visor
