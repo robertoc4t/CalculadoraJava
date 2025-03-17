@@ -27,20 +27,26 @@ public class Button extends JButton implements ActionListener{
         }
 
         addActionListener(this);
+        
     }
     
 
     public void setDimension(int a, int b){
         setPreferredSize(new Dimension(a, b));
+        
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         // Ação a ser executada quando o botão for clicado
-        System.out.println("Botão com valor " + value + " foi clicado.");
+        value = value;
+        System.out.println(value);
+        getValue();
         // Implementar a lógica desejada aqui
     }
-        
+    public int getValue(){
+        return value;
+    }
 
     
 }
