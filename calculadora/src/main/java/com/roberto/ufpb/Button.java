@@ -2,10 +2,12 @@ package com.roberto.ufpb;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-public class Button extends JButton{
+public class Button extends JButton implements ActionListener{
     private int value;
     private String valueString;
 
@@ -23,6 +25,8 @@ public class Button extends JButton{
         } catch (NumberFormatException e) {
             
         }
+
+        addActionListener(this);
     }
     
 
@@ -30,6 +34,13 @@ public class Button extends JButton{
         setPreferredSize(new Dimension(a, b));
     }
 
-    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // Ação a ser executada quando o botão for clicado
+        System.out.println("Botão com valor " + value + " foi clicado.");
+        // Implementar a lógica desejada aqui
+    }
+        
+
     
 }

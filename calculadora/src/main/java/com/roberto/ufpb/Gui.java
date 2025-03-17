@@ -61,12 +61,14 @@ public class Gui extends JFrame {
             }
         }
 
-
+    
 
         // Adiciona o painel de botões abaixo do visor
         add(painelBotoes, BorderLayout.CENTER);
+        
 
         setVisible(true);
     }
+    
 
 }
