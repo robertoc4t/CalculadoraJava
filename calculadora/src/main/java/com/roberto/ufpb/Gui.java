@@ -8,6 +8,8 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -62,7 +64,8 @@ public class Gui extends JFrame {
         }
 
     
-        String[] conta;
+        List<String> lista = new ArrayList<>();
+        
 
         // Adiciona o painel de botões abaixo do visor
         add(painelBotoes, BorderLayout.CENTER);

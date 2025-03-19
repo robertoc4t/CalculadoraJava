@@ -5,11 +5,13 @@ public class Mananger {
     private int value2;
     private String valueOperation;
     private int total;
+    private boolean isNumeric = false;
 
     public Mananger(String valueOp){
         
         this.valueOperation = valueOp;
-
+        isNumeric = valueOp.matches("[0-9]+");
+        
     }
 
 
@@ -32,6 +34,8 @@ public class Mananger {
         }
         return 0;
     }
+
+
 
 
     
