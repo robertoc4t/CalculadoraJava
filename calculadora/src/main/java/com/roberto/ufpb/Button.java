@@ -3,8 +3,7 @@ package com.roberto.ufpb;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
+import java.awt.event.ActionListene;
 import javax.swing.JButton;
 
 public class Button extends JButton implements ActionListener{
@@ -21,9 +20,6 @@ public class Button extends JButton implements ActionListener{
         setText(String.valueOf(numeros));
         setBackground(Color.white);
         valueString = numeros;
-
-        
-        addActionListener(this);
 
         boolean notIsEquals = true;
     while(notIsEquals){
@@ -46,6 +42,9 @@ public class Button extends JButton implements ActionListener{
         // Ação a ser executada quando o botão for clicado
         valueString = valueString;
         System.out.println(valueString);
+        if(valueString == "="){
+            resultado();
+        }
         
         getValue();
         
@@ -53,6 +52,16 @@ public class Button extends JButton implements ActionListener{
     public boolean getValue(){
         return valueString.matches("[0-9]+");
     }
+
+    public int  calcular(){
+        return m.actionCalculate(valueString);
+
+    }
+
+    public float resultado(){
+
+    }
+}
 
 
     
