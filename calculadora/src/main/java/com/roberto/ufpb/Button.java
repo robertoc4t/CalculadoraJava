@@ -33,9 +33,4 @@ public class Button extends JButton implements ActionListener {
     public boolean isNumeric() {
         return valueString.matches("[0-9]+");
     }
-
-    public void addActionListener(BotaoListener botaoListener) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addActionListener'");
-    }
 }

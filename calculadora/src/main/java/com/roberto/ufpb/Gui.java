@@ -18,10 +18,12 @@ import javax.swing.JPanel;
 
 public class Gui extends JFrame {
     private JLabel textVisor;
-    private String[][] matrizValores = new String[4][4]; // Matriz para armazenar os valores dos botões
-    private int currentRow = 0, currentCol = 0; // Controle da posição na matriz
+    private Mananger manager; // Instância da classe Manager para calcular
+    private String currentInput = ""; // Para armazenar o input atual que está sendo exibido no visor
 
     public Gui() {
+        manager = new Mananger(); // Instancia o Manager para lidar com os cálculos
+        
         setTitle("Calculadora");
         setSize(600, 450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,7 +50,7 @@ public class Gui extends JFrame {
             {"7", "8", "9", "+"},
             {"4", "5", "6", "-"},
             {"1", "2", "3", "/"},
-            {"0", "%", "x", "="}
+            {"C", "0", "=", "x"}
         };
 
         // Criando botões e adicionando ao painel
@@ -59,32 +61,9 @@ public class Gui extends JFrame {
                 gbc.weightx = 1.0;
                 gbc.weighty = 1.0;
 
-                Button botao = new Button(numeros[i][j]);
-                botao.addActionListener(new BotaoListener(i, j)); // Listener para capturar os cliques
+                JButton botao = new JButton(numeros[i][j]);
+                botao.addActionListener(new BotaoListener(numeros[i][j])); // Listener para capturar os cliques
                 painelBotoes.add(botao, gbc);
-            }
-        }
-        
-        private class BotaoListener implements ActionListener {
-            private int row, col;
-    
-            public BotaoListener(int row, int col) {
-                this.row = row;
-                this.col = col;
-            }
-    
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JButton botaoClicado = (JButton) e.getSource();
-                String valor = botaoClicado.getText();
-    
-                // Adiciona o valor na matriz
-                matrizValores[row][col] = valor;
-    
-                // Atualiza o visor com os botões pressionados
-                textVisor.setText(textVisor.getText() + valor);
-                
-                System.out.println("Botão clicado: " + valor);
             }
         }
 
@@ -92,5 +71,30 @@ public class Gui extends JFrame {
         setVisible(true);
     }
 
+    // BotaoListener fora do método construtor
+    public class BotaoListener implements ActionListener {
+        private String valor;
 
+        public BotaoListener(String valor) {
+            this.valor = valor;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (valor.equals("=")) {
+                // Se o botão pressionado for '=', calcula e exibe o resultado
+                String resultado = manager.actionCalculate(currentInput); // Chama a lógica do cálculo
+                textVisor.setText(resultado); // Exibe o resultado no visor
+                currentInput = ""; // Limpa o input atual
+            } else if (valor.equals("C")) {
+                // Se o botão pressionado for 'C', limpa o visor
+                currentInput = "";
+                textVisor.setText("");
+            } else {
+                // Adiciona o valor ao input atual e exibe no visor
+                currentInput += valor;
+                textVisor.setText(currentInput);
+            }
+        }
+    }
 }

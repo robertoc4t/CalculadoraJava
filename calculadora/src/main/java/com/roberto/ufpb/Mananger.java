@@ -3,55 +3,42 @@ package com.roberto.ufpb;
 import java.util.ArrayList;
 
 public class Mananger {
-    private int value1;
-    private String valueOperation;
-    private int total = 0;
-    private ArrayList<String> lista;
-    
-    public Mananger(String valueOp){
-        
-        this.valueOperation = valueOp;
-        
+    private ArrayList<String> lista; // Lista para armazenar os valores e operadores
+    private int total; // Resultado da operação atual
 
+    public Mananger() {
+        lista = new ArrayList<>();
+        total = 0;
     }
-    
 
-    public class CalculadoraLista {
+    // Método para processar o clique no botão
+    public String actionCalculate(String input) {
+        // Limpa a lista antes de processar o novo input
+        lista.clear();
 
-    public int actionCalculate(String value) {
-        // Verifica se o valor inserido é um número (usando regex)
-        if (value.matches("[0-9]+")) {
-            lista.add(value); // Adiciona número na lista
-            return 0; // Apenas retorna 0, pois ainda não há cálculo a ser feito
-        } else {
-            // Se não for número, assume que é um operador e chama o cálculo
-            lista.add(value);
-
-            if (lista.size() == 3) { // Só faz o cálculo quando tiver 3 elementos (num, op, num)
-                int resultado = calcularValorLista();
-                lista.clear(); // Limpa a lista após a operação para reiniciar
-                lista.add(String.valueOf(resultado)); // Adiciona o resultado como novo ponto de partida
-                return resultado;
-            }
-
-            return 0; // Retorna 0 se ainda não houver 3 elementos
+        // Divide o input em partes (número, operador, número)
+        String[] partes = input.split("(?<=\\d)(?=\\D)|(?<=\\D)(?=\\d)");
+        for (String parte : partes) {
+            lista.add(parte);
         }
-    }
 
-    public int calcularValorLista() {
+        // Verifica se a lista tem exatamente 3 elementos (número, operador, número)
         if (lista.size() != 3) {
-            throw new IllegalArgumentException("A lista deve conter exatamente 3 elementos.");
+            return "Erro: Formato inválido.";
         }
 
-        // Convertendo os valores corretamente
-        int primeiroValor = Integer.parseInt(lista.get(0)); // Convertendo de String para int
-        int segundoValor = Integer.parseInt(lista.get(2)); // Convertendo de String para int
-        String operador = lista.get(1); // Pegando o operador corretamente
+        // Calcula o resultado
+        return calcularResultado();
+    }
 
-        // Inicializando o resultado
-        int total;
+    // Método para calcular o resultado da lista
+    private String calcularResultado() {
+        // Convertendo os valores de String para int
+        int primeiroValor = Integer.parseInt(lista.get(0));
+        int segundoValor = Integer.parseInt(lista.get(2));
+        String operador = lista.get(1);
 
-        // Verificando qual operação realizar
+        // Calculando o resultado
         switch (operador) {
             case "+":
                 total = primeiroValor + segundoValor;
@@ -61,7 +48,7 @@ public class Mananger {
                 break;
             case "/":
                 if (segundoValor == 0) {
-                    throw new ArithmeticException("Divisão por zero não é permitida.");
+                    return "Erro: Divisão por zero não permitida.";
                 }
                 total = primeiroValor / segundoValor;
                 break;
@@ -70,15 +57,15 @@ public class Mananger {
                 total = primeiroValor * segundoValor;
                 break;
             default:
-                throw new IllegalArgumentException("Operador inválido: " + operador);
+                return "Erro: Operador inválido.";
         }
 
+        // Exibindo o resultado
+        return String.valueOf(total); // Retorna o resultado como string
+    }
+
+    // Método para retornar o total calculado
+    public int getTotal() {
         return total;
     }
-
-
-    }
-
-    
-
 }
