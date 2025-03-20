@@ -3,68 +3,39 @@ package com.roberto.ufpb;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListene;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
-public class Button extends JButton implements ActionListener{
-    private int value;
+public class Button extends JButton implements ActionListener {
     private String valueString;
-    private Mananger m;
 
-    
-    public Button(String numeros){
-
+    public Button(String numeros) {
         setPreferredSize(new Dimension(100, 50));
-        setVisible(true);
-        setBackground(Color.BLACK);
-        setText(String.valueOf(numeros));
-        setBackground(Color.white);
-        valueString = numeros;
+        setBackground(Color.WHITE);
+        setText(numeros);
+        this.valueString = numeros;
 
-        boolean notIsEquals = true;
-    while(notIsEquals){
-        
-
-        notIsEquals = false;
+        // Adiciona o ActionListener para capturar cliques
+        this.addActionListener(this);
     }
 
-        
-    }
-    
-
-    public void setDimension(int a, int b){
+    public void setDimension(int a, int b) {
         setPreferredSize(new Dimension(a, b));
-        
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Ação a ser executada quando o botão for clicado
-        valueString = valueString;
-        System.out.println(valueString);
-        if(valueString == "="){
-            resultado();
-        }
-        
-        getValue();
-        
+        // Captura e imprime qual botão foi clicado
+        System.out.println("Botão clicado: " + valueString);
     }
-    public boolean getValue(){
+
+    public boolean isNumeric() {
         return valueString.matches("[0-9]+");
     }
 
-    public int  calcular(){
-        return m.actionCalculate(valueString);
-
+    public void addActionListener(BotaoListener botaoListener) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addActionListener'");
     }
-
-    public float resultado(){
-
-    }
-}
-
-
-    
-
-    
 }

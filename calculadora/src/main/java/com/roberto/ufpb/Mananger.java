@@ -14,18 +14,6 @@ public class Mananger {
         
 
     }
-
-    int actionCalculate(String valueString) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    int actionCalculate(String valueString) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    
-
-
     
 
     public class CalculadoraLista {
@@ -91,15 +79,6 @@ public class Mananger {
 
     }
 
-
-
-
-
-
-    public int actionCalculate(String valueString) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'actionCalculate'");
-    }
     
 
 }
